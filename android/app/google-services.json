@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "478127570821",
+    "project_id": "my-ship-3939d",
+    "storage_bucket": "my-ship-3939d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478127570821:android:ce62cd701bef4349b84eec",
+        "android_client_info": {
+          "package_name": "com.lmoc.dev.ship"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478127570821-m4dpha9lto0tit9nqh01v6lf79ttv7qg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA5C0cj6gnLNIFgxcbjp7ZiwdDhuF8b-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478127570821-m4dpha9lto0tit9nqh01v6lf79ttv7qg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,16 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../Utils/utils.dart';
 
 class GroupChatTagsUI extends StatefulWidget {
-  const GroupChatTagsUI({super.key, this.getDataFromGroupChatUI});
+  const GroupChatTagsUI(
+      {super.key, this.getDataFromGroupChatUI, this.groupBasicDetailsDetails});
 
+  final groupBasicDetailsDetails;
   final getDataFromGroupChatUI;
 
   @override
@@ -13,6 +18,20 @@ class GroupChatTagsUI extends StatefulWidget {
 }
 
 class _GroupChatTagsUIState extends State<GroupChatTagsUI> {
+  //
+  @override
+  void initState() {
+    //
+    if (kDebugMode) {
+      print('*********** CHAT DATA ( tags screen ) ********************');
+      print(widget.groupBasicDetailsDetails);
+      print('***********************************************************');
+      print(widget.getDataFromGroupChatUI);
+    }
+    //
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Align(

@@ -557,7 +557,11 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
         ),
         // UI => TAGS UI
         // UI => TAGS UI// UI => TAGS UI// UI => TAGS UI
-        GroupChatTagsUI(getDataFromGroupChatUI: getSnapshot[index]),
+        GroupChatTagsUI(
+          getDataFromGroupChatUI: getSnapshot[index],
+          groupBasicDetailsDetails: widget.chatDialogData,
+        ),
+
         //
         Align(
           alignment: Alignment.bottomRight,
@@ -736,40 +740,42 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
         print('do something');
         print(strarray.length);
         print('Total Input Tags =====> ${strarray.length}');
-        for (int i = 0; i < strarray.length; i++) {
-          // print('The indes are ===> $i');
-          print('Tags ===> ${strarray[i]}');
-          //
-          CollectionReference users = FirebaseFirestore.instance.collection(
-            '${strFirebaseMode}group_messages/${widget.chatDialogData['group_id'].toString()}/details',
-          );
 
-          users
-              .add(
-                {
-                  'sender_name': strLoginUserName.toString(),
-                  'sender_firebase_id': FirebaseAuth.instance.currentUser!.uid,
-                  'message': strLastMessageEntered.toString(),
-                  'time_stamp': DateTime.now().millisecondsSinceEpoch,
-                  'room': 'group',
-                  'type': 'tags',
-                  'chat_members': '',
-                  'tags': strarray[i].toString(),
-                  'resolved': 'no'
-                },
-              )
-              .then(
-                (value) =>
-                    //
-                    print('IN LOOP'),
-                // funcEditMessageAndInsertFirestoreId(value.id),
-                //
-              )
-              .catchError(
-                (error) => print("Failed to add user: $error"),
-              );
-          //
-        }
+        CollectionReference users = FirebaseFirestore.instance.collection(
+          '${strFirebaseMode}group_messages/${widget.chatDialogData['group_id'].toString()}/details',
+        );
+
+        users
+            .add(
+              {
+                'sender_name': FirebaseAuth.instance.currentUser!.displayName,
+                'sender_firebase_id': FirebaseAuth.instance.currentUser!.uid,
+                'message': strLastMessageEntered.toString(),
+                'time_stamp': DateTime.now().millisecondsSinceEpoch,
+                'room': 'group',
+                'type': 'tags',
+                'chat_members': '',
+                'tags': strarray,
+                'resolved': 'no'
+              },
+            )
+            .then(
+              (value) =>
+                  //
+                  print('IN LOOP'),
+              // funcEditMessageAndInsertFirestoreId(value.id),
+              //
+            )
+            .catchError(
+              (error) => print("Failed to add user: $error"),
+            );
+        //
+
+        /*for (int i = 0; i < strarray.length; i++) {
+        // print('The indes are ===> $i');
+        // print('Tags ===> ${strarray[i]}');
+        //
+        */
 
         //   print('first letter of your text is ====> ${strarray[0]}');
         //   print('first alphabet of your that word is ====> ${strarray[0][0]}');

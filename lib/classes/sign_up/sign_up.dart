@@ -27,6 +27,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   late final TextEditingController contName;
   late final TextEditingController contEmail;
   late final TextEditingController contPassword;
+  late final TextEditingController contTotalShip;
+  // late final TextEditingController contShipExpYear;
+  // late final TextEditingController contShipTotalWeight;
+  // late final TextEditingController contShipTotalCarryWeight;
   //
   final random = Random();
   //
@@ -36,6 +40,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     contName = TextEditingController();
     contEmail = TextEditingController();
     contPassword = TextEditingController();
+    contTotalShip = TextEditingController();
+
+    // contShipBuildYear = TextEditingController();
+    // contShipExpYear = TextEditingController();
+    // contShipTotalWeight = TextEditingController();
+    // contShipTotalCarryWeight = TextEditingController();
     //
 
 //
@@ -48,6 +58,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
     contName.dispose();
     contEmail.dispose();
     contPassword.dispose();
+    contTotalShip.dispose();
+
+    // contShipBuildYear.dispose();
+    // contShipExpYear.dispose();
+    // contShipTotalWeight.dispose();
+    // contShipTotalCarryWeight.dispose();
     //
 
     super.dispose();
@@ -110,188 +126,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 height: 20,
               ),
               //
-              Row(
-                children: [
-                  //
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  //
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: textWithRegularStyle(
-                      'Name',
-                      Colors.black,
-                      14.0,
-                    ),
-                  ),
-                ],
-              ),
+              nameTextUI(),
               //
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: 5,
-                ),
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    12.0,
-                  ),
-                  color: Colors.white,
-                  border: Border.all(width: 0.4),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 188, 182, 182),
-                      blurRadius: 6.0,
-                      spreadRadius: 2.0,
-                      offset: Offset(0.0, 0.0),
-                    )
-                  ],
-                ),
-                child: TextFormField(
-                  controller: contName,
-                  textAlign: TextAlign.center,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Name',
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter name';
-                    }
-                    return null;
-                  },
-                ),
-              ),
+              nameUI(),
               //
               const SizedBox(
                 height: 10,
               ),
               //
-              Row(
-                children: [
-                  //
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  //
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: textWithRegularStyle(
-                      'Email address',
-                      Colors.black,
-                      14.0,
-                    ),
-                  ),
-                ],
-              ),
+              emailTextUI(),
               //
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: 5,
-                ),
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    12.0,
-                  ),
-                  color: Colors.white,
-                  border: Border.all(width: 0.4),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 188, 182, 182),
-                      blurRadius: 6.0,
-                      spreadRadius: 2.0,
-                      offset: Offset(0.0, 0.0),
-                    )
-                  ],
-                ),
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: contEmail,
-                  textAlign: TextAlign.center,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Email address',
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter email address';
-                    }
-                    return null;
-                  },
-                ),
-              ),
+              emailUI(),
               //
               const SizedBox(
                 height: 10,
               ),
               //
-              Row(
-                children: [
-                  //
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  //
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: textWithRegularStyle(
-                      'Password',
-                      Colors.black,
-                      14.0,
-                    ),
-                  ),
-                ],
-              ),
+              passwordTextUI(),
               //
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: 5,
-                ),
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    12.0,
-                  ),
-                  color: Colors.white,
-                  border: Border.all(width: 0.4),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Color.fromARGB(255, 188, 182, 182),
-                      blurRadius: 6.0,
-                      spreadRadius: 2.0,
-                      offset: Offset(0.0, 0.0),
-                    )
-                  ],
-                ),
-                child: TextFormField(
-                  controller: contPassword,
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    hintText: 'Password',
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter password';
-                    }
-                    return null;
-                  },
-                ),
-              ),
+              passwordUI(),
               //
               const SizedBox(
                 height: 10,
               ),
               //
+              totalShipTextUI(),
+              //
+              totalShipUI(),
+              //
+              const SizedBox(
+                height: 10,
+              ),
 
               SizedBox(
                 height: 60,
@@ -331,7 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
               //
-              SizedBox(
+              /*SizedBox(
                 height: 60,
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
@@ -360,11 +225,256 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-              ),
+              ),*/
               //
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Row nameTextUI() {
+    return Row(
+      children: [
+        //
+        const SizedBox(
+          width: 10,
+        ),
+        //
+        Align(
+          alignment: Alignment.topLeft,
+          child: textWithRegularStyle(
+            'Name',
+            Colors.black,
+            14.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container nameUI() {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+      ),
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          12.0,
+        ),
+        color: Colors.white,
+        border: Border.all(width: 0.4),
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(255, 188, 182, 182),
+            blurRadius: 6.0,
+            spreadRadius: 2.0,
+            offset: Offset(0.0, 0.0),
+          )
+        ],
+      ),
+      child: TextFormField(
+        controller: contName,
+        textAlign: TextAlign.center,
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Name',
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter name';
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
+  Row emailTextUI() {
+    return Row(
+      children: [
+        //
+        const SizedBox(
+          width: 10,
+        ),
+        //
+        Align(
+          alignment: Alignment.topLeft,
+          child: textWithRegularStyle(
+            'Email address',
+            Colors.black,
+            14.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+//
+  Row totalShipTextUI() {
+    return Row(
+      children: [
+        //
+        const SizedBox(
+          width: 10,
+        ),
+        //
+        Align(
+          alignment: Alignment.topLeft,
+          child: textWithRegularStyle(
+            'Total Ship',
+            Colors.black,
+            14.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container totalShipUI() {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+      ),
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          12.0,
+        ),
+        color: Colors.white,
+        border: Border.all(width: 0.4),
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(255, 188, 182, 182),
+            blurRadius: 6.0,
+            spreadRadius: 2.0,
+            offset: Offset(0.0, 0.0),
+          )
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        controller: contTotalShip,
+        textAlign: TextAlign.center,
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Total ship',
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter total ship count';
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
+  //
+  Row passwordTextUI() {
+    return Row(
+      children: [
+        //
+        const SizedBox(
+          width: 10,
+        ),
+        //
+        Align(
+          alignment: Alignment.topLeft,
+          child: textWithRegularStyle(
+            'Password',
+            Colors.black,
+            14.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container emailUI() {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+      ),
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          12.0,
+        ),
+        color: Colors.white,
+        border: Border.all(width: 0.4),
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(255, 188, 182, 182),
+            blurRadius: 6.0,
+            spreadRadius: 2.0,
+            offset: Offset(0.0, 0.0),
+          )
+        ],
+      ),
+      child: TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        controller: contEmail,
+        textAlign: TextAlign.center,
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Email address',
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter email address';
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
+  Container passwordUI() {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+      ),
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          12.0,
+        ),
+        color: Colors.white,
+        border: Border.all(width: 0.4),
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(255, 188, 182, 182),
+            blurRadius: 6.0,
+            spreadRadius: 2.0,
+            offset: Offset(0.0, 0.0),
+          )
+        ],
+      ),
+      child: TextFormField(
+        controller: contPassword,
+        obscureText: true,
+        textAlign: TextAlign.center,
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Password',
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter password';
+          }
+          return null;
+        },
       ),
     );
   }
@@ -404,21 +514,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       print('=================================================');
     }
     //
-    // var plainText = contName.text;
-    // final key = encrypt.Key.fromUtf8('my 32 length key................');
-    // final iv = encrypt.IV.fromLength(16);
-    // // final encrypted = encrypt.Encrypter(AES(key));
-    // final encrypter = Encrypter(AES(key));
-    // //
-    // final encrypted = encrypter.encrypt(plainText, iv: iv);
-    // final decrypted = encrypter.decrypt(encrypted, iv: iv);
-    // if (kDebugMode) {
-    //   // final encrypted = encrypter.encrypt(plainText, iv: iv);
-    //   // final decrypted = encrypter.decrypt(encrypted, iv: iv);
-
-    //   print(decrypted);
-    //   print(encrypted.base64);
-    // }
 
     FirebaseAuth.instance.currentUser!
         // .updateDisplayName(encrypted.base64.toString())
@@ -438,13 +533,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
     users
         .add(
           {
-            'user_firebase_id': FirebaseAuth.instance.currentUser!.uid,
-            'user_firebase_name':
-                FirebaseAuth.instance.currentUser!.displayName,
-            'user_firebase_email': FirebaseAuth.instance.currentUser!.email,
+            'company_firebase_id': FirebaseAuth.instance.currentUser!.uid,
+            'company_name': FirebaseAuth.instance.currentUser!.displayName,
+            'company_email': FirebaseAuth.instance.currentUser!.email,
             'time_stamp': DateTime.now().millisecondsSinceEpoch,
-            'id_card_number': get6DigitNumber(),
-            'active': 'yes'
+            'company_id': get16DigitNumber(),
+            'active': 'no',
+            'type': 'admin'
           },
         )
         .then((value) => {

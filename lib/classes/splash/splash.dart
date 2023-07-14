@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:water_ship/classes/chat_dialog/chat_dialog.dart';
+import 'package:water_ship/classes/home/home.dart';
 
 import '../../main.dart';
 import '../Utils/utils.dart';
@@ -135,7 +136,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const DialogScreen(),
+                builder: (context) => const HomeScreen(),
               ),
             );
             //

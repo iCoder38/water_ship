@@ -36,96 +36,142 @@ class _GroupChatTagsUIState extends State<GroupChatTagsUI> {
   Widget build(BuildContext context) {
     return Align(
         alignment: Alignment.bottomRight,
-        child: Column(
-          children: [
-            if (widget.getDataFromGroupChatUI['type'].toString() == 'tags') ...[
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 40.0,
+        child: Container(
+          margin: const EdgeInsets.only(
+            left: 40.0,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border.all(
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(
+              12.0,
+            ),
+          ),
+          child: Column(
+            children: [
+              if (widget.getDataFromGroupChatUI['type'].toString() ==
+                  'tags') ...[
+                //
+                const SizedBox(
+                  height: 10,
                 ),
-                // height: 100,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.amber[50],
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: textWithBoldStyle(
-                      //
-                      widget.getDataFromGroupChatUI['tags'].toString(),
-                      //
-                      Colors.black,
-                      16.0,
+                //
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                  ),
+                  // height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.amber[100],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: textWithBoldStyle(
+                        //
+                        widget.getDataFromGroupChatUI['sender_name'].toString(),
+                        //
+                        Colors.black,
+                        16.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              //
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 40.0,
-                ),
-                // height: 100,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.lightBlue[100],
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: textWithRegularStyle(
-                      //
-                      widget.getDataFromGroupChatUI['message'].toString(),
-                      //
-                      Colors.black,
-                      16.0,
+                // 8910260
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                  ),
+                  // height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.amber[50],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: textWithBoldStyle(
+                        //
+                        widget.getDataFromGroupChatUI['tags'].toString(),
+                        //
+                        Colors.black,
+                        16.0,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              //
-              const SizedBox(
-                height: 4,
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 40.0,
+                //
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                  ),
+                  // height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.lightBlue[100],
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Align(
+                      alignment: Alignment.topRight,
+                      child: textWithRegularStyle(
+                        //
+                        widget.getDataFromGroupChatUI['message'].toString(),
+                        //
+                        Colors.black,
+                        16.0,
+                      ),
+                    ),
+                  ),
                 ),
-                // height: 100,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.transparent,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        // height: 60,
-                        width: MediaQuery.of(context).size.width,
+                //
+                const SizedBox(
+                  height: 4,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 20.0,
+                  ),
+                  // height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.transparent,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          // height: 60,
+                          width: MediaQuery.of(context).size.width,
 
-                        decoration: BoxDecoration(
-                          color: Colors.greenAccent[200],
-                          borderRadius: BorderRadius.circular(
-                            8.0,
+                          decoration: BoxDecoration(
+                            color: Colors.greenAccent[200],
+                            borderRadius: BorderRadius.circular(
+                              8.0,
+                            ),
                           ),
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: textWithBoldStyle(
-                              'Resolved',
-                              Colors.black,
-                              14.0,
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: textWithBoldStyle(
+                                'Resolved',
+                                Colors.black,
+                                14.0,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                ), //
+                const SizedBox(
+                  height: 10,
                 ),
-              )
-            ] else ...[
-              textWithRegularStyle('normal text', Colors.black, 14.0),
-            ]
-          ],
+                //
+              ] else ...[
+                textWithRegularStyle('normal text', Colors.black, 14.0),
+              ]
+            ],
+          ),
         )
 
         /*(getSnapshot[index]['message'].toString() == '')

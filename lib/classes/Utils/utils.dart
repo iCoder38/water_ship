@@ -103,6 +103,18 @@ String get6DigitNumber() {
 }
 
 /* ================================================================ */
+/* ========== CREATE 16 DIGITS RANDOM NUMBER =============== */
+
+String get16DigitNumber() {
+  Random random = Random();
+  String number = '';
+  for (int i = 0; i < 16; i++) {
+    number = number + random.nextInt(9).toString();
+  }
+  return number;
+}
+
+/* ================================================================ */
 /* ================================================================ */
 
 void showCustomDialog(BuildContext context, String message) async {

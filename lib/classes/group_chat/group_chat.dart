@@ -305,13 +305,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                                       // }
                                       return Stack(
                                         children: [
-                                          // if (strImageLoader == '1') ...[
-                                          //   SizedBox(
-                                          //     height: 0,
-                                          //   )
-                                          // ] else ...[
-                                          //   imageProcessingLoaderUI(),
-                                          // ],
+                                          //
                                           ListView.builder(
                                             // controller: _scrollController,
                                             itemCount: getSnapShopValue.length,
@@ -323,11 +317,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                                             physics:
                                                 const BouncingScrollPhysics(),
                                             itemBuilder: (context, index) {
-                                              return
-                                                  // (strImageLoader == '0')
-                                                  //     ? imageProcessingLoaderUI()
-                                                  //     :
-                                                  Container(
+                                              return Container(
                                                 padding: const EdgeInsets.only(
                                                   left: 14,
                                                   right: 14,
@@ -345,8 +335,7 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                                                                 .uid
                                                         ? Alignment.topRight
                                                         : Alignment.topLeft),
-                                                    child: (getSnapShopValue[index]
-                                                                    [
+                                                    child: (getSnapShopValue[index][
                                                                     'sender_firebase_id']
                                                                 .toString() ==
                                                             FirebaseAuth
@@ -354,14 +343,14 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
                                                                 .currentUser!
                                                                 .uid)
                                                         ? senderUI(
-                                                            getSnapShopValue, index)
+                                                            getSnapShopValue,
+                                                            index)
                                                         : receiverUI(
                                                             getSnapShopValue,
-                                                            index) //receiverUI(getSnapShopValue, index),
-                                                    ),
+                                                            index)),
                                               );
                                             },
-                                          )
+                                          ),
                                         ],
                                       );
                                     } else if (snapshot.hasError) {
@@ -545,18 +534,18 @@ class _GroupChatScreenState extends State<GroupChatScreen> {
     return Column(
       children: [
         //
-        Align(
-          alignment: Alignment.bottomRight,
-          child: textWithRegularStyle(
-            //
-            getSnapshot[index]['sender_name'],
-            //
-            Colors.black,
-            10.0,
-          ),
-        ),
+        // Align(
+        //   alignment: Alignment.bottomRight,
+        //   child: textWithRegularStyle(
+        //     //
+        //     getSnapshot[index]['sender_name'],
+        //     //
+        //     Colors.black,
+        //     10.0,
+        //   ),
+        // ),
         // UI => TAGS UI
-        // UI => TAGS UI// UI => TAGS UI// UI => TAGS UI
+        //
         GroupChatTagsUI(
           getDataFromGroupChatUI: getSnapshot[index],
           groupBasicDetailsDetails: widget.chatDialogData,

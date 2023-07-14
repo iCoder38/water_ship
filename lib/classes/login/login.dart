@@ -290,6 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   //
+
   //
   signInViaFirebase() async {
     try {
@@ -303,12 +304,28 @@ class _LoginScreenState extends State<LoginScreen> {
       //
       Navigator.pop(context);
       //
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const DialogScreen(),
-        ),
-      );
+
+      if (FirebaseAuth.instance.currentUser!.emailVerified == false) {
+        //
+        popUpWithOutsideClick(context,
+            'Your account is not avtive. Please check your mail and verify your account.');
+        // send email verification link
+        FirebaseAuth.instance.currentUser
+            ?.sendEmailVerification()
+            .then((value) => {
+                  //
+                  print('success sent email ')
+                });
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DialogScreen(),
+          ),
+        );
+      }
+      /*
+      */
       //
     } on FirebaseAuthException catch (e) {
       if (kDebugMode) {
@@ -325,6 +342,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  //
   //
   customException(errorMessageIs) {
     //

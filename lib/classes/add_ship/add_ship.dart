@@ -10,6 +10,8 @@ import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 
 import '../Utils/utils.dart';
 
+import 'package:adaptive_action_sheet/adaptive_action_sheet.dart';
+
 class AddShipScreen extends StatefulWidget {
   const AddShipScreen({super.key});
 
@@ -27,10 +29,34 @@ class _AddShipScreenState extends State<AddShipScreen> {
   late final TextEditingController constShipExpYear;
   late final TextEditingController constShipTotalWeight;
   late final TextEditingController constShipTotalCarryWeight;
+  late final TextEditingController contShipType;
   //
   final random = Random();
   //
   var strShipId = '0';
+  //
+  var arrShipListing = [
+    'Container ship',
+    'Bulk carrier ship',
+    'Fishing vessel',
+    'Dredger',
+    'High-speed craft',
+    'Gas carrier',
+    'Offshore ship',
+    'Passenger ship',
+    'Naval ship',
+    'Livestock carrier',
+    'Roll-on Roll-Off ship',
+    'Tanker ship',
+    'Heavy life ship',
+    'Yacht',
+    'Tugs',
+    'Submarine',
+    'Hovercraft',
+    'Sailboat',
+    'Barge',
+    'Canoe',
+  ];
   //
   @override
   void initState() {
@@ -41,10 +67,13 @@ class _AddShipScreenState extends State<AddShipScreen> {
     constShipExpYear = TextEditingController();
     constShipTotalWeight = TextEditingController();
     constShipTotalCarryWeight = TextEditingController();
+    contShipType = TextEditingController();
 
     strShipId = get16DigitNumber();
 
     constShipId.text = strShipId.toString();
+    //
+
     //
     super.initState();
   }
@@ -58,6 +87,7 @@ class _AddShipScreenState extends State<AddShipScreen> {
     constShipExpYear.dispose();
     constShipTotalWeight.dispose();
     constShipTotalCarryWeight.dispose();
+    contShipType.dispose();
 
     super.dispose();
   }
@@ -107,93 +137,248 @@ class _AddShipScreenState extends State<AddShipScreen> {
       ),
       body: Form(
         key: formKey,
-        child: Column(
-          children: [
-            //
-            const SizedBox(
-              height: 16,
-            ),
-            shipNameTextUI(),
-            shipNameTextFieldUI(),
-            //
-            const SizedBox(
-              height: 16,
-            ),
-            //
-            shipIdTextUI(),
-            shipIdTextFieldUI(),
-            //
-            const SizedBox(
-              height: 16,
-            ),
-            //
-            shipBuildYearTextUI(),
-            shipBuildYearTextFieldUI(),
-            //
-            const SizedBox(
-              height: 16,
-            ),
-            //
-            shipExpYearTextUI(),
-            shipExpYearTextFieldUI(),
-            //
-            const SizedBox(
-              height: 16,
-            ),
-            //
-            shipTotalWeightTextUI(),
-            shipTotalWeightTextFieldUI(),
-            const SizedBox(
-              height: 16,
-            ),
-            //
-            shipTotalCarryWeightTextUI(),
-            shipTotalCarryWeightTextFieldUI(),
-            //
-            const SizedBox(
-              height: 20,
-            ),
-            //
-            SizedBox(
-              height: 60,
-              width: MediaQuery.of(context).size.width - 100,
-              child: Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: NeoPopButton(
-                  color: Colors.lightBlueAccent,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              //
+              const SizedBox(
+                height: 16,
+              ),
+              shipNameTextUI(),
+              shipNameTextFieldUI(),
+              //
+              const SizedBox(
+                height: 16,
+              ),
+              //
+              shipIdTextUI(),
+              shipIdTextFieldUI(),
+              //
+              const SizedBox(
+                height: 16,
+              ),
+              //
+              shipBuildYearTextUI(),
+              shipBuildYearTextFieldUI(),
+              //
+              const SizedBox(
+                height: 16,
+              ),
+              //
+              shipExpYearTextUI(),
+              shipExpYearTextFieldUI(),
+              //
+              const SizedBox(
+                height: 16,
+              ),
+              //
+              shipTotalWeightTextUI(),
+              shipTotalWeightTextFieldUI(),
+              const SizedBox(
+                height: 16,
+              ),
+              //
+              shipTotalCarryWeightTextUI(),
+              shipTotalCarryWeightTextFieldUI(),
+              //
+              const SizedBox(
+                height: 16,
+              ),
+              //
+              shipTypeTextUI(),
+              shipTypeTextFieldUI(),
+              //
+              const SizedBox(
+                height: 20,
+              ),
+              //
+              SizedBox(
+                height: 60,
+                width: MediaQuery.of(context).size.width - 100,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: NeoPopButton(
+                    color: Colors.lightBlueAccent,
 
-                  // onTapUp: () => HapticFeedback.vibrate(),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                  ),
-                  onTapUp: () {
-                    //
-                    if (formKey.currentState!.validate()) {
+                    // onTapUp: () => HapticFeedback.vibrate(),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+                    onTapUp: () {
                       //
-                      showCustomDialog(context, 'please wait...');
-                      funcGetCompanyDetails();
+                      if (formKey.currentState!.validate()) {
+                        //
+                        showCustomDialog(context, 'please wait...');
+                        funcGetCompanyDetails();
 
-                      //
-                    }
-                  },
-                  onTapDown: () => HapticFeedback.vibrate(),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      textWithBoldStyle(
-                        'Add',
-                        Colors.black,
-                        14.0,
-                      ),
-                    ],
+                        //
+                      }
+                    },
+                    onTapDown: () => HapticFeedback.vibrate(),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        textWithBoldStyle(
+                          'Add',
+                          Colors.black,
+                          14.0,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            //
-          ],
+              //
+            ],
+          ),
         ),
+      ),
+    );
+  }
+
+// SHIP TOTAL WEIGHT
+  Row shipTypeTextUI() {
+    return Row(
+      children: [
+        //
+        const SizedBox(
+          width: 10,
+        ),
+        //
+        Align(
+          alignment: Alignment.topLeft,
+          child: textWithRegularStyle(
+            'Ship Type',
+            Colors.black,
+            14.0,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Container shipTypeTextFieldUI() {
+    return Container(
+      margin: const EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+      ),
+      height: 50,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          12.0,
+        ),
+        color: Colors.white,
+        border: Border.all(width: 0.4),
+        boxShadow: const [
+          BoxShadow(
+            color: Color.fromARGB(255, 188, 182, 182),
+            blurRadius: 6.0,
+            spreadRadius: 2.0,
+            offset: Offset(0.0, 0.0),
+          )
+        ],
+      ),
+      child: TextFormField(
+        // enabled: false,
+        readOnly: true,
+        controller: contShipType,
+        textAlign: TextAlign.center,
+        decoration: const InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Ship Type',
+          suffixIcon: Icon(
+            Icons.arrow_drop_down,
+          ),
+        ),
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter ship type';
+          }
+          return null;
+        },
+        onTap: () {
+          if (kDebugMode) {
+            print('Clicked');
+          }
+          //
+          showAdaptiveActionSheet(
+            context: context,
+            title: const Text('Please select Ship Type'),
+            androidBorderRadius: 30,
+            actions: <BottomSheetAction>[
+              for (int i = 0; i < arrShipListing.length; i++) ...[
+                BottomSheetAction(
+                    title: textWithRegularStyle(
+                      arrShipListing[i].toString(),
+                      Colors.black,
+                      14.0,
+                    ), // Text(arrShipListing[i]),
+                    onPressed: (context) {
+                      //
+                      Navigator.pop(context);
+                      setState(() {
+                        contShipType.text = arrShipListing[i];
+                      });
+                      //
+                    }),
+              ]
+
+              /*BottomSheetAction(
+                  title: const Text('Bulk carrier ships'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Fishing vessels'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Dredgers'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('High-speed craft'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Gas carriers'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Offshore ships'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Passenger ships'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Naval ships'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Livestock carriers'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Roll-on Roll-Off ships'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Tanker ships'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Heavy life ships'),
+                  onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Yacht'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Tugs'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Submarine'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Hovercraft'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Sailboat'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Barge'), onPressed: (context) {}),
+              BottomSheetAction(
+                  title: const Text('Canoe'), onPressed: (context) {}),*/
+            ],
+            cancelAction: CancelAction(
+                title: const Text(
+                    'Cancel')), // onPressed parameter is optional by default will dismiss the ActionSheet
+          );
+//
+        },
       ),
     );
   }
@@ -634,6 +819,7 @@ class _AddShipScreenState extends State<AddShipScreen> {
             'ship_total_weight': constShipTotalWeight.text.toString(),
             'ship_total_weight_carry':
                 constShipTotalCarryWeight.text.toString(),
+            'ship_type': contShipType.text.toString(),
             'ship_profile_image': '',
             'ship_image_gallery': [],
             'match': [

@@ -13,6 +13,7 @@ import 'package:flutter/services.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
+import 'package:water_ship/classes/home/home.dart';
 import 'package:water_ship/classes/sign_up/sign_up.dart';
 // import 'package:encrypt/encrypt.dart' as encrypt;
 // import 'package:crypto/crypto.dart';
@@ -320,7 +321,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const DialogScreen(),
+            builder: (context) => const HomeScreen(),
           ),
         );
       }

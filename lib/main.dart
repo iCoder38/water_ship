@@ -13,6 +13,7 @@ void main() async {
   //
   WidgetsFlutterBinding.ensureInitialized();
   //
+  
   await Firebase.initializeApp(
     name: "Ship",
     options: DefaultFirebaseOptions.currentPlatform,

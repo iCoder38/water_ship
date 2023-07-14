@@ -24,6 +24,7 @@ class _HomeShiftListingUIState extends State<HomeShiftListingUI> {
           .collection('${strFirebaseMode}ships')
           .doc('India')
           .collection('details')
+          .orderBy('time_stamp', descending: true)
           .where('match', arrayContainsAny: [
         //
         widget.shipListingGetData[0]['company_firebase_id'].toString(),
@@ -113,7 +114,7 @@ class _HomeShiftListingUIState extends State<HomeShiftListingUI> {
                               ),
                               subtitle: textWithRegularStyle(
                                 //
-                                'Ship id : ${saveSnapshotValue[i]["ship_id"]}',
+                                'Ship id : ${saveSnapshotValue[i]["ship_id"]}\ntype : ${saveSnapshotValue[i]["ship_type"]}',
                                 //
                                 Colors.grey,
                                 12.0,

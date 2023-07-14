@@ -639,6 +639,7 @@ class _AddShipScreenState extends State<AddShipScreen> {
             'match': [
               FirebaseAuth.instance.currentUser!.uid,
             ],
+            'time_stamp': DateTime.now().millisecondsSinceEpoch,
             'active': 'yes',
             'type': 'ship',
           },

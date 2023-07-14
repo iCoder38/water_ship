@@ -62,7 +62,7 @@ class _HomeShiftListingUIState extends State<HomeShiftListingUI> {
                         margin: const EdgeInsets.only(
                           top: 10,
                         ),
-                        height: 280,
+                        // height: 280,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           color: Colors.transparent,
@@ -89,9 +89,9 @@ class _HomeShiftListingUIState extends State<HomeShiftListingUI> {
                                           '')
                                       ? Image.asset(
                                           //
-                                          'assets/images/ship_1.jpg',
+                                          'assets/images/ship_avatar.png',
                                           //
-                                          fit: BoxFit.cover,
+                                          fit: BoxFit.contain,
                                         )
                                       : Image.network(
                                           //
@@ -112,17 +112,37 @@ class _HomeShiftListingUIState extends State<HomeShiftListingUI> {
                                 Colors.black,
                                 16.0,
                               ),
-                              subtitle: textWithRegularStyle(
-                                //
-                                'Ship id : ${saveSnapshotValue[i]["ship_id"]}\ntype : ${saveSnapshotValue[i]["ship_type"]}',
-                                //
-                                Colors.grey,
-                                12.0,
+                              subtitle: Column(
+                                // mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: textWithRegularStyle(
+                                      //
+                                      '${saveSnapshotValue[i]["ship_type"]}',
+                                      //
+                                      Colors.grey[600],
+                                      12.0,
+                                    ),
+                                  ),
+                                  //
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: textWithRegularStyle(
+                                      //
+                                      '\nShip id : ${saveSnapshotValue[i]["ship_id"]}\n',
+                                      //
+                                      Colors.grey,
+                                      12.0,
+                                    ),
+                                  ),
+                                  //
+                                ],
                               ),
                               //
-                              leading: const Icon(
-                                Icons.abc,
-                              ),
+                              // leading: const Icon(
+                              //   Icons.abc,
+                              // ),
                             ),
                             //
                           ],
